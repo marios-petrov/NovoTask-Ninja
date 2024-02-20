@@ -1,0 +1,123 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYC/AOC Requirements Tracker</title>
+    <link rel="stylesheet" href="{% static 'css/cycreq/cycreq.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <!-- CYC Requirements (Dynamic with Completion Toggle) -->
+            <div class="checklist">
+                <div class="checklist-header">CYC Requirements</div>
+                <ul class="checklist-content">
+                    {% for requirement in cyc_requirements %}
+                    <li class="{% if requirement.is_completed %}completed{% endif %}">
+                        {{ requirement.name }}
+                        <form method="POST" action="{% url 'cycreq' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="toggle_cyc_requirement" value="true">
+                            <input type="hidden" name="requirement_id" value="{{ requirement.id }}">
+                            <button type="submit" class="{% if requirement.is_completed %}complete-btn{% else %}remove-btn{% endif %}">
+                                {% if requirement.is_completed %}Unmark{% else %}Mark as Completed{% endif %}
+                            </button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <!-- AOC To-do List with Dropdown -->
+            <div class="checklist">
+                <div class="checklist-header">AOC To-do</div>
+                <select id="aoc-select">
+                    <option value="">Select your AOC</option>
+                    <option value="math">Math</option>
+                    <option value="computer-science">Computer Science</option>
+                    <option value="chemistry">Chemistry</option>
+                </select>
+                <ul id="aoc-list" class="checklist-content">
+                    <!-- Courses for the selected AOC will appear here dynamically -->
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <!-- In Progress List -->
+<div class="checklist">
+    <div class="checklist-header">In Progress</div>
+    <form method="POST" action="{% url 'cycreq' %}">
+        {% csrf_token %}
+        <input type="hidden" name="action" value="add_in_progress">
+        <input type="text" name="course_name" placeholder="Course name" class="course-input">
+        <input type="time" name="start_time" placeholder="Start time" class="time-input">
+        <input type="time" name="end_time" placeholder="End time" class="time-input">
+        <input type="text" name="days_of_week" placeholder="Days (e.g., MWF)" class="days-input">
+        <button type="submit" class="add-btn">Add</button>
+    </form>
+    <ul id="inprogress-list" class="checklist-content">
+        {% for course in in_progress_courses %}
+        <li>
+            {{ course.name }}
+            {% if course.start_time %}{{ course.start_time|date:"H:i" }}{% endif %}
+            {% if course.end_time %} - {{ course.end_time|date:"H:i" }}{% endif %}
+            {% if course.days_of_week %} ({{ course.days_of_week }}){% endif %}
+            <form method="POST" action="{% url 'cycreq' %}" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="mark_as_completed">
+                <input type="hidden" name="course_id" value="{{ course.id }}">
+                <button type="submit" class="complete-btn">Mark as Completed</button>
+            </form>
+            <form method="POST" action="{% url 'cycreq' %}" style="display:inline;">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="remove_course">
+                <input type="hidden" name="course_type" value="in_progress">
+                <input type="hidden" name="course_id" value="{{ course.id }}">
+                <button type="submit" class="remove-btn">Remove</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+        </div>
+        <div class="col">
+            <!-- Completed List -->
+            <div class="checklist">
+                <div class="checklist-header">Completed</div>
+                <form method="POST" action="{% url 'cycreq' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="action" value="add_completed">
+                    <input type="text" name="course_name" placeholder="Add completed course">
+                    <button type="submit">Add</button>
+                </form>
+                <ul id="completed-list" class="checklist-content">
+                    {% for course in completed_courses %}
+                    <li>
+                        {{ course.name }}
+                        <form method="POST" action="{% url 'cycreq' %}" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="action" value="remove_course">
+                            <input type="hidden" name="course_type" value="completed">
+                            <input type="hidden" name="course_id" value="{{ course.id }}">
+                            <button type="submit" class="remove-btn">Remove</button>
+                        </form>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/cycreq/cycreq.js' %}"></script>
+</body>
+</html>
+{% endblock %}

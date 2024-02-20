@@ -1,0 +1,202 @@
+body {
+    background-color: rgb(226, 215, 215);
+    margin: 5px 10px;
+}
+
+.body-cont {
+    width: 100%;
+    max-width: 400pxs;
+    display: flex;
+    min-height: calc(100vh - 10px);
+}
+
+.content {
+    width: 80vw;
+    max-width: 33;
+}
+
+.content {
+    height: calc(100vh - 10px);
+}
+
+.nav-section {
+    background: rgb(174, 174, 243);
+    padding: 20px 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+}
+
+@media (min-height: 650px) and (min-width: 800px) {
+    .nav-section {
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 40px 15px;
+    }
+}
+
+.main {
+    background: white;
+    padding: 5px 5px 5px 10px;
+    flex: 1;
+    max-width: 73.5vw;
+    max-height: calc(100vh - 10px);
+    display: flex;
+    flex-direction: column;
+
+}
+
+@media (min-height: 650px) and (min-width: 800px) {
+    .main {
+        max-width: 80vw;
+    }
+}
+
+.calender-view {
+    flex: 1;
+    overflow: auto;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.buttons>button {
+    width: 120px;
+    font-weight: bold;
+    color: black;
+    padding: 12px;
+}
+
+.create-title {
+    display: flex;
+    align-items: center;
+    margin: 20px 0px;
+    padding: 0px 20px;
+    gap: 20px;
+    cursor: pointer;
+}
+
+.create-button {
+    padding: 5px 10px;
+    color: white;
+    font-weight: bold;
+    background-color: blue;
+    border-radius: 20px;
+}
+
+.date-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+#date-label {
+    width: 230px;
+    text-align: center;
+}
+
+#next-month,
+#prev-month {
+    cursor: pointer;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.grid-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    margin: 5px 0px;
+    border-radius: 10px;
+}
+
+/* Styles for screens with height more than 500 pixels */
+@media (min-height: 800px) and (min-width: 800px) {
+
+    /** Make calander date thicker */
+    .grid-item {
+        padding: 20px 15px;
+        font-size: 1.8rem;
+    }
+}
+
+
+.day-names {
+    font-weight: bold;
+}
+
+.time {
+    font-size: 2.4rem;
+    text-align: center;
+    font-weight: bold;
+}
+
+.create {
+    font-size: 1.2rem;
+    text-align: center;
+    border-radius: 30px;
+    padding: 5px 0px;
+
+}
+
+@media (min-height: 650px) and (min-width: 800px) {
+    .create {
+        font-size: 1.8rem;
+        font-weight: bold;
+        padding: 10px 0px;
+    }
+}
+
+
+.nav-links {
+    flex: 1;
+    margin-bottom: -20px;
+    border-radius: 20px;
+    margin-top: 10px;
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+
+.nav-links a{ /* color of the links & removing _ */
+	color: white;
+    text-decoration: none;
+	}
+
+@media (min-height: 650px) and (min-width: 800px) {
+    .nav-links {
+        font-size: 1.3rem;
+    }
+
+    .nav-divider {
+        font-size: 1.5rem;
+    }
+
+    .nav-links a{ /* color of the links */
+        color: white;
+        text-decoration: none;
+
+        }
+}
+.nav-divider {
+    background: #655ddf;
+    margin: 0px -10px;
+    padding: 3px 10px;
+    font-weight: bolder;
+    font-size: 1.2rem;
+}

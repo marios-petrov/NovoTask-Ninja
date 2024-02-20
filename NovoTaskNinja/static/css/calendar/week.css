@@ -1,0 +1,19 @@
+.w-day-event {
+    position: relative;
+}
+
+.w-with-tasks {
+    border: 1px solid blue;
+    background-color: blanchedalmond;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.w-cell {
+    text-align: center;
+    margin: 2px;
+}
+
+td{
+    margin:2px;
+}

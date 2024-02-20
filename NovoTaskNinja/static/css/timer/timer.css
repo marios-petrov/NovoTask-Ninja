@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-image: url('../../images/hello-kitty.jpg');
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.container {
+  max-width: 400px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  border-radius: 10px;
+  border: solid 1px;
+  background-color: rgba(0, 0, 1, 0.2);
+}
+
+.time {
+  padding: 1rem 0;
+  font-size: 2rem;
+}
+
+h1,
+p {
+  color: #f8f8f8;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.buttons>button {
+  width: 60px;
+  text-align: center;
+  font-weight: bold;
+  color: black;
+  background-color: white;
+  border: 1px solid white;
+  padding: 12px;
+}
+
+button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #f8f8f8;
+}

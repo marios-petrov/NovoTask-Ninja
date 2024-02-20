@@ -1,0 +1,35 @@
+{% load static %}
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Timer{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/base/base.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="body-cont">
+        <!--NAV SECTION-->
+        <div class="col-3 nav-section rounded">
+            <div class="bg-primary nav-links">
+                <div class="nav-divider">Novo-Planning</div>
+                <div><a href="{% url 'home' %}">🗓️ Calendar</a></div>
+                <div><a href="{% url 'ncfhours' %}">📚 NCF Hours</a></div>
+                <div><a href="{% url 'todo' %}">📝 To-Do</a></div>
+                <div class="nav-divider">Novo-Gadgets</div>
+                <div><a href="{% url 'timer' %}">⏲️ Timer</a></div>
+                <div><a href="{% url 'cycreq' %}">🚸 CYC/AOC Tracker</a></div>
+                <div><a href="{% url 'surprise' %}"><img src="{% static 'images/magicwand.png' %}" alt="Surprise" style="display: block; margin-left: auto; margin-right: auto;"></a></div>
+                <img src="{% static 'images/logo.png' %}" alt="logo" class="logo">
+            </div>
+        </div>
+        <!-- Insert Child template contents here -->
+        <div id="content" name="content" class="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

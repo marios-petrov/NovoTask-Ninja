@@ -1,0 +1,112 @@
+body {
+  background-color: #0d6efd;
+
+}
+main{
+   font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.checklist {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-basis: 30%;
+  margin-bottom: 20px;
+}
+.checklist-header {
+  font-size: 24px;
+  color: #333333;
+  margin-bottom: 20px;
+}
+.checklist-content {
+  list-style: none;
+  padding: 0;
+}
+.checklist-content li {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+}
+input[type="text"] {
+  width: calc(100% - 60px);
+  padding: 10px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #0056b3;
+}
+.remove-btn {
+  margin-left: 10px;
+  padding: 2px 5px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.remove-btn:hover {
+  background-color: #ff1a1a;
+}
+.complete-btn {
+  margin-left: 10px;
+  padding: 2px 5px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.complete-btn:hover {
+  background-color: #218838;
+}
+
+.completed {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+}
+
+.course-input, .time-input, .days-input {
+    width: 40%; /* This will make each input take up the full width available */
+    padding: 10px;
+    margin-bottom: 10px; /* Add some space below each input */
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #0056b3;
+}
+
+.course-time, .course-days {
+    margin-left: 10px;
+    font-weight: bold;
+}

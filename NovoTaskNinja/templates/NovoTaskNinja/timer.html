@@ -1,0 +1,30 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/timer/timer.css' %}">
+    <title>Novo Timer</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>OwO Timer OwO</h1>
+      <p class="time">
+        <span id="minutes">00</span>:<span id="seconds">00</span>:<span id="tens">00</span>
+      </p>
+      <div class="buttons">
+        <button type="button" class="btn" id="start">Start</button>
+        <button type="button" class="btn" id="stop">Stop</button>
+        <button type="button" class="btn" id="reset">Reset</button>
+      </div>
+    </div>
+    </div>
+
+    <script src="{% static 'js/timer/timer.js' %}"></script>
+  </body>
+</html>
+{% endblock %}
