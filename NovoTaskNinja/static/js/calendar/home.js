@@ -106,6 +106,7 @@ const Home = () => {
                 <div>🗓️ Calendar</div>
                 <div><a href="../../NovoTaskNinja/ncfhours/">📚 NCF Hours</a></div>
                 <div><a href="../../NovoTaskNinja/todo/">📝 To-Do</a></div>
+                <!-- Put Food Page Here and use a Cute Emoji (We-School emojis for references) -->
                 <div class="nav-divider">Novo-Gadgets</div>
                 <div><a href="../../NovoTaskNinja/timer/">⏲️ Timer</a></div>
                 <div><a href="../../NovoTaskNinja/cycreq/">🚸 CYC/AOC Tracker</a></div>
