@@ -1,0 +1,44 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Don't Kill Me Food {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/dontkillmefood/dontkillmefood.css' %}">
+</head>
+<body>
+
+<div class="vstack container">
+    <div class="row text-center" style="margin-left: 20%; width: 40%;">
+        <div class="col-xs-6 justify-content-center ham-menu"><a href="https://www.nutritics.com/menu/ma4021"> Explore the Ham menu this week...</a></div>
+    </div>
+    <div class="row">
+        <div class="col justify-content-center">
+            <!-- Food Status by Weekday // Repurposed CYC AOC -->
+            <div class="checklist">
+                <div class="checklist-header">Don't Kill Me Food</div>
+                <ul class="checklist-content">
+                    {% for foodstatus in weekdays %}
+                    <li class="{% if foodstatus.is_lethal %}completed{% endif %}">
+                        {{ foodstatus.name }}
+                        <form method="POST" action="{% url 'dontkillmefood' %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="toggle_foodstatus" value="true">
+                            <input type="hidden" name="foodstatus_id" value="{{ foodstatus.id }}">
+                            <button type="submit" class="{% if foodstatus.is_lethal %}complete-btn{% else %}remove-btn{% endif %}">
+                                {% if foodstatus.is_lethal %}Lethal{% else %}Safe{% endif %}
+                            </button>
+                        </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

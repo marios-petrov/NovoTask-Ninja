@@ -1,13 +1,23 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.shortcuts import get_object_or_404
 from django.utils.dateparse import parse_time
 from django.views.decorators.http import require_http_methods
 from .models import *
 # Create your views here.
 
-def home(request):
-    return render(request, './NovoTaskNinja/home.html')
+def calendar(request):
+    return render(request, './NovoTaskNinja/calendar.html')
+
+def ncfhours(request):
+    return render(request, './NovoTaskNinja/ncfhours.html')
+
+def timer(request):
+    return render(request, './NovoTaskNinja/timer.html')
+
+def surprise(request):
+    return render(request, './NovoTaskNinja/surprise.html')
 
 @require_http_methods(["GET", "POST"])
 def cycreq(request):
@@ -68,14 +78,52 @@ def cycreq(request):
     }
     return render(request, 'NovoTaskNinja/cycreq.html', context)
 
+@require_http_methods(["GET", "POST"])
+def dontkillmefood(request):
+    # Handling food status, ripped from CYC
+    if request.method == "POST":
+        action = request.POST.get('action')
+        if 'toggle_foodstatus' in request.POST:
+            foodstatus_id = request.POST.get('foodstatus_id', '')
+            foodstatus = foodDay.objects.get(id=foodstatus_id)
+            foodstatus.is_lethal = not foodstatus.is_lethal
+            foodstatus.save()
+        return redirect('dontkillmefood')
+
+    # Querysets for the context
+    weekdays = foodDay.objects.all()
+
+    context = {
+        'weekdays': weekdays
+    }
+    return render(request, 'NovoTaskNinja/dontkillmefood.html', context)
+
+@require_http_methods(["GET", "POST"])
 def todo(request):
-    return render(request, './NovoTaskNinja/todo.html')
+    if request.method == "POST":
+        if 'add' in request.POST:
+            description = request.POST.get('description', '').strip()
+            if description:  # Ensure the description is not empty
+                TodoItem.objects.create(description=description)
+        elif 'complete' in request.POST:
+            todo_id = request.POST.get('todo_id', '')
+            todo_item = get_object_or_404(TodoItem, id=todo_id)
+            todo_item.completed = not todo_item.completed
+            todo_item.save()
+        elif 'delete' in request.POST:
+            todo_id = request.POST.get('todo_id', '')
+            todo_item = get_object_or_404(TodoItem, id=todo_id)
+            todo_item.delete()
 
-def ncfhours(request):
-    return render(request, './NovoTaskNinja/ncfhours.html')
+        return redirect('todo')
 
-def timer(request):
-    return render(request, './NovoTaskNinja/timer.html')
+    # Get all todo items to display
+    todo_items = TodoItem.objects.all().order_by('-created_at')
+    context = {
+        'todo_items': todo_items
+    }
+    return render(request, 'NovoTaskNinja/todo.html', context)
 
-def surprise(request):
-    return render(request, './NovoTaskNinja/surprise.html')
+
+
+    

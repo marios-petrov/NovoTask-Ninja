@@ -1,12 +1,14 @@
 from django.db import models
-class Task(models.Model):
+from django import forms
+from .models import *
 
-    name = models.CharField(max_length=200)
-    complete = models.BooleanField(default=False)
-    created = models.DateTimeField(auto_now_add=True)
+class TodoItem(models.Model):
+    description = models.CharField(max_length=255)
+    completed = models.BooleanField(default=False)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.name
+        return self.description
 
 class InProgressCourse(models.Model):
     name = models.CharField(max_length=100)
@@ -29,6 +31,14 @@ class CompletedCourse(models.Model):
 class CYCRequirement(models.Model):
     name = models.CharField(max_length=200)
     is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+    
+class foodDay(models.Model):
+    name = models.CharField(max_length=200)
+    is_lethal = models.BooleanField(default=False)
+    #days_of_week = models.CharField(max_length=7, null=True, blank=True)  # e.g. 'MWF' for Monday, Wednesday, Friday
 
     def __str__(self):
         return self.name
