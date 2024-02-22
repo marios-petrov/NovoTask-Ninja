@@ -1,0 +1,68 @@
+{% extends './base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{% static 'css/todo/todo2.css' %}">
+
+        <title>To-Do List for Novo</title>
+    </head>
+
+    <body>
+        <div class="container">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <header>
+                <h1>To-Do List for Novo</h1>
+            </header>
+
+            <!-- Add Todo Form -->
+            <form method="POST" action="">
+                {% csrf_token %} <!-- CSRF verification, security satisfaction -->
+                <input type="text" name="name" class="todo-input" placeholder="Add a new task">
+                <button type="submit" name="add" class="todo-button">
+                    <i class="fas fa-plus-circle fa-lg"></i>
+                </button>
+            </form>
+            
+            <div class="todo-container">
+                <ul class="todo-list">
+                    {% for task in tasks %}
+                    
+                        <li class="{% if 'completed' if task.completed else 'incomplete' }">
+
+                        {{task.name}}
+
+
+                        <!-- Complete Button -->
+                        <form method="POST" action="" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="task_id" value="{{ task.id }}">
+                            <button type="submit" name="delete" class="delete-btn">
+                                <i class="fas fa-check"></i>
+                            </button>
+                        </form>
+                    </li>
+                    {% endfor %}
+        
+                </ul>
+            </div>
+        </body>
+
+    </div>
+</html>
+{% endblock %}

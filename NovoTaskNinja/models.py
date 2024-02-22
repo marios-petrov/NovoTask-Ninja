@@ -2,6 +2,19 @@ from django.db import models
 from django import forms
 from .models import *
 
+class Meta:
+    ordering = ['name']
+
+class Task(models.Model):
+
+    name = models.CharField(max_length=200)
+    id = models.AutoField(primary_key=True)
+    completed = models.BooleanField(default=False)
+    # everytime an item is created, it will be automatically added
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 class TodoItem(models.Model):
     description = models.CharField(max_length=255)
     completed = models.BooleanField(default=False)
@@ -42,3 +55,4 @@ class foodDay(models.Model):
 
     def __str__(self):
         return self.name
+

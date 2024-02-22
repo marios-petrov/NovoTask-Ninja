@@ -1,11 +1,8 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.shortcuts import get_object_or_404
 from django.utils.dateparse import parse_time
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib import messages # for celebration message
 from django.views.decorators.http import require_http_methods
 from .models import *
-# Create your views here.
 
 def calendar(request):
     return render(request, './NovoTaskNinja/calendar.html')
@@ -123,6 +120,42 @@ def todo(request):
         'todo_items': todo_items
     }
     return render(request, 'NovoTaskNinja/todo.html', context)
+
+@require_http_methods(["GET", "POST"])
+def bilgestodo(request):
+    """
+    tasks = Task.objects.all()
+
+    form = TaskForm() # Form Model from models.py
+
+    if request.method == "POST":
+        form = TaskForm(request.POST)
+        if form.is_valid(): # saving it to the database
+            form.save()
+        return redirect('/NovoTaskNinja/todo/') #refresh page
+
+    context = {"tasks": tasks, "form":form}
+    return render(request, "./NovoTaskNinja/todo.html", context)"""
+
+    if request.method == "POST":
+        if 'add' in request.POST:
+            name = request.POST.get('name', '').strip()
+            if name:  # Ensure the description is not empty
+                Task.objects.create(name=name)
+        elif 'delete' in request.POST:
+            task_id = request.POST.get('task_id', '')
+            task = get_object_or_404(Task, id=task_id)
+            task.delete()
+            messages.success(request, "Slay Novo!! 💅 One more thing off the list to go enjoy bayfront soon!")
+
+        return redirect('bilgestodo')
+
+    # if the request is GET, display the todo list
+    tasks = Task.objects.all().order_by('-created_at')
+    context = {
+        'tasks': tasks
+    }
+    return render(request, 'NovoTaskNinja/bilgestodo.html', context)
 
 
 

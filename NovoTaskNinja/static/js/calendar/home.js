@@ -103,22 +103,18 @@ const Home = () => {
         <div class=" col-3 nav-section ">
             <div class="bg-primary nav-links">
                 <div class="nav-divider">Novo-Planning</div>
-                <div><a href="../../NovoTaskNinja/calendar/">🗓️ Calendar</a></div>
-                <div><a href="../../NovoTaskNinja/ncfhours/">📚 NCF Hours</a></div>
-                <div><a href="../../NovoTaskNinja/todo/">📝 To-Do</a></div>
-                <div><a href="../../NovoTaskNinja/dontkillmefood/">🍔 Don't Kill Me Food</a></div>
+                <div><a href="/">🗓️ Calendar</a></div>
+                <div><a href="../../ncfhours/">📚 NCF Hours</a></div>
+                <div><a href="../../todo/">📝 To-Do M</a></div>
+                <div><a href="../../bilgestodo/">🧿 To-Do B</a></div>
+                <div><a href="../../dontkillmefood/">🍔 Don't Kill Me Food</a></div>
                 <div class="nav-divider">Novo-Gadgets</div>
-                <div><a href="../../NovoTaskNinja/timer/">⏲️ Timer</a></div>
-                <div><a href="../../NovoTaskNinja/cycreq/">🚸 CYC/AOC Tracker</a></div>
-                <div><a href="../../NovoTaskNinja/surprise/"><img src="../../static/images/magicwand.png" alt="Surprise" style="display: block; margin-left: auto; margin-right: auto;"/></a></div>     
-                <img src="../../static/images/logo.png"/>  <!-- Same directory name within template, note if referencing bc it made me waste a lot of time-->
-
-                
-
+                <div><a href="../../timer/">⏲️ Timer</a></div>
+                <div><a href="../../cycreq/">🚸 CYC/AOC Tracker</a></div>
+                <div><a href="../../surprise/"><img src="../../static/images/magicwand.png" alt="Surprise" style="display: block; margin-left: auto; margin-right: auto;"/></a></div>     
+                <img src="../../static/images/logo.png"/>
             </div>
-            
         </div>
-        
         <!--MAIN SECTION-->
         <div class="main ">
             <div class="buttons">
@@ -158,7 +154,6 @@ const Home = () => {
 
     </div>
     `
-
 }
 
 
