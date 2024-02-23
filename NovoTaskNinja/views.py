@@ -138,37 +138,32 @@ def todo(request):
     }
     return render(request, 'NovoTaskNinja/todo.html', context)
 
+# handling the Todo B page
+# this version has the pop-up message after task completion
 @require_http_methods(["GET", "POST"])
 def bilgestodo(request):
-    """
-    tasks = Task.objects.all()
-
-    form = TaskForm() # Form Model from models.py
-
+    # if the user clicked a button with POST method
     if request.method == "POST":
-        form = TaskForm(request.POST)
-        if form.is_valid(): # saving it to the database
-            form.save()
-        return redirect('/NovoTaskNinja/todo/') #refresh page
-
-    context = {"tasks": tasks, "form":form}
-    return render(request, "./NovoTaskNinja/todo.html", context)"""
-
-    if request.method == "POST":
+        # if it was the add task button, add the task to database
         if 'add' in request.POST:
-            name = request.POST.get('name', '').strip()
+            name = request.POST.get('name', '').strip() # get the name entered by user
             if name:  # Ensure the description is not empty
-                Task.objects.create(name=name)
+                Task.objects.create(name=name) # save the task in the database with name
+        # if it was the delete  button, delete the task from database
         elif 'delete' in request.POST:
-            task_id = request.POST.get('task_id', '')
-            task = get_object_or_404(Task, id=task_id)
-            task.delete()
+            task_id = request.POST.get('task_id', '') # get the task clicked on by its id from the database
+            # https://docs.djangoproject.com/en/5.0/topics/http/shortcuts/#get-object-or-404
+            task = get_object_or_404(Task, id=task_id) # get the object if doesn't exist, throw error
+            task.delete() # delete the task from the database
+            # create success message
+            # https://docs.djangoproject.com/en/5.0/ref/contrib/messages/#changing-the-minimum-recorded-level-per-request
             messages.success(request, "Slay Novo!! 💅 One more thing off the list to go enjoy bayfront soon!")
 
-        return redirect('bilgestodo')
+        return redirect('bilgestodo') # refresh the page to display the updated list
 
     # if the request is GET, display the todo list
-    tasks = Task.objects.all().order_by('-created_at')
+    tasks = Task.objects.all().order_by('-created_at') #get all the tasks in order of creation
+    # create context object to pass them to html
     context = {
         'tasks': tasks
     }
