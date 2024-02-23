@@ -3,8 +3,14 @@ import { messageSig, tasksSig } from './store.js';
 import { addTask } from './database.js';
 import { getCareMessage } from './database.js';
 
+/**
+ * Component for the create task popup
+ * closePopup -is called to close the popup
+ * open -determines if popup is shown
+ */
 const CreatePopup = ({ closePopup, open }) => {
-
+  
+    // runs when the component mounts, and sets date and time to current time and date
     useEffect(() => {
         if (!open) return
         // Get the current date and time
@@ -17,6 +23,7 @@ const CreatePopup = ({ closePopup, open }) => {
         document.getElementById('cp-time').value = formattedTime;
     }, [open])
 
+    // called to save the entered task
     const save = () => {
         try {
             const title = document.querySelector('#cp-title').value.trim()
@@ -48,10 +55,11 @@ const CreatePopup = ({ closePopup, open }) => {
             console.warn("Save error")
         }
     }
-
+    // don't render when open is false
     if (!open) {
         return null
     }
+    // draw the popup 
     return html`
     <div class='cp-body'>
       <div class='cp-content'>
