@@ -35,5 +35,32 @@ In case of errors, update your python to the latest version.
 
 ## Demo
 ### Calendar Page
+#### Main/Monthly View
+![Calendar Monthly](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Calendar_monthly.png)
+#### Daily View
+![Calendar Daily](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Calendar_daily.png)
+#### Weekly View
+![Calendar Weekly](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Calendar_weekly.png)
+#### Semester View
+![Calendar Semester](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Calendar_semesterly.png)
 
+### NCF Hours Page
+![NCF Hours](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/NCFHours.png)
+
+### Todo Page
+![Todo](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Todo.png)
+
+### Don't Kill Me Food Page
+![Food](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Food.png)
+
+### Timer Page
+![Timer](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Timer.png)
+
+### CYC/AOC Tracker Page
+![CYC/AOC](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/CYCReq.png)
+
+### Magic Wand/Surprise Page
+![Surprise](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Surprise.png)
+
+## Resources/Acknowledgements
 
