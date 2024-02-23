@@ -77,14 +77,29 @@ def cycreq(request):
 
 @require_http_methods(["GET", "POST"])
 def dontkillmefood(request):
+    """Displays the days and allows a user to mark them.
+
+    Parameters
+    ----------
+    request : GET or POST request
+        the request on page by the user
+
+    Returns
+    -------
+    redirect
+        points you back to the page to render
+    render
+        renders the page with all of the days of the week 
+    """
     # Handling food status, ripped from CYC
     if request.method == "POST":
         action = request.POST.get('action')
-        if 'toggle_foodstatus' in request.POST:
+        if 'toggle_foodstatus' in request.POST: 
+            #these are dumb names in hindsite but i didnt wanna rename anything
             foodstatus_id = request.POST.get('foodstatus_id', '')
-            foodstatus = foodDay.objects.get(id=foodstatus_id)
-            foodstatus.is_lethal = not foodstatus.is_lethal
-            foodstatus.save()
+            foodstatus = foodDay.objects.get(id=foodstatus_id) #getting the day objects for marking
+            foodstatus.is_lethal = not foodstatus.is_lethal #marks it nonlethal
+            foodstatus.save() #saves it 
         return redirect('dontkillmefood')
 
     # Querysets for the context
