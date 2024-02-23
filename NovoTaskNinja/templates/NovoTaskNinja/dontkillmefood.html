@@ -1,6 +1,6 @@
 {% extends './base.html' %}
 {% load static %}
-
+<!-- ANDY WORKED ON THIS ONE -->
 {% block content %}
 <html lang="en">
 <head>
@@ -21,15 +21,15 @@
         <div class="checklist">
             <div class="checklist-header">Don't Kill Me Food</div>
             <ul class="checklist-content">
-                {% for foodstatus in weekdays %}
+                {% for foodstatus in weekdays %} <!-- weekdays is the context -->
                 <li class="{% if foodstatus.is_lethal %}completed{% endif %}">
                     {{ foodstatus.name }}
                     <form method="POST" action="{% url 'dontkillmefood' %}">
                         {% csrf_token %}
                         <input type="hidden" name="toggle_foodstatus" value="true">
                         <input type="hidden" name="foodstatus_id" value="{{ foodstatus.id }}">
-                        <button type="submit" class="{% if foodstatus.is_lethal %}complete-btn{% else %}remove-btn{% endif %}">
-                            {% if foodstatus.is_lethal %}Lethal{% else %}Safe{% endif %}
+                        <button type="submit" class="{% if foodstatus.is_lethal %}complete-btn{% else %}remove-btn{% endif %}"> <!-- displays button based on status -->
+                            {% if foodstatus.is_lethal %}Lethal{% else %}Safe{% endif %} <!-- displays text based on status -->
                         </button>
                     </form>
                 </li>
