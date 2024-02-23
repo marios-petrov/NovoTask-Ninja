@@ -1,12 +1,16 @@
+/**
+ * contains utility functions and default data for the page
+ */
+
 import { useEffect } from 'https://cdn.jsdelivr.net/npm/preact-htm-signals-standalone@0.0.16/+esm'
 import { tasksSig } from "./store.js"
 
-// Function to generate a unique ID for a task
+/** Creates a unique random no for task IDS */
 export const getUID = () => {
     return Math.floor(Math.random() * 100000)
 }
 
-// Function to add a task to the tasksSig signal
+/** Adds a new task with to the store,adds an id to it */
 export const addTask = (task) => {
     // Adding a unique ID to the task
     task = { ...task, id: getUID() }
@@ -14,17 +18,17 @@ export const addTask = (task) => {
     tasksSig.value = [task, ...tasksSig.value];
 }
 
-// Function to remove a task from the tasksSig signal by ID
+/** Clears a task by using ID(not used for now) */
 export const removeTask = (id) => {
     // Filtering out the task with the specified ID
     tasksSig.value = tasksSig.value.filter(t => t.id !== id);
 }
 
-// Custom hook to manage tasks using local storage
+/**A custom hook that maintains tasks, by loading and storing them */
 export const useTasks = () => {
-    // Effect hook to run on component mount
+    // hook that runs when component(HOME) mounts
     useEffect(() => {
-        // Retrieve tasks from local storage
+        // Retrieve tasks from local storage & adds in default tasks
         const tasksStr = localStorage.getItem('tasks');
         if (tasksStr) {
             // Parse stored tasks and add default tasks
@@ -39,8 +43,9 @@ export const useTasks = () => {
         }
     }, []);
 
-    // Effect hook to run on component unmount or dependency change
+    // Hook that runs when taskSig.value changes(so when task are added or removed)
     useEffect(() => {
+        // it stores the task from the user to localstorage
         return () => {
             // Filter out tasks with 'no-save' hint and save to local storage
             const toSaveTasks = tasksSig.value.filter(t => t.hint !== 'no-save');
@@ -50,7 +55,9 @@ export const useTasks = () => {
     }, [tasksSig.value]);
 }
 
-
+/**
+ * Messages to show the user, to inform him to go for lunch
+ */
 export const hamMessages = [
     "It's date for a delicious meal at HAM! Treat yourself.",
     "Feeling hungry? HAM is waiting for you! Enjoy your lunch.",
@@ -59,11 +66,18 @@ export const hamMessages = [
     "Craving something tasty? Head to HAM and satisfy your appetite."
 ]
 
+/**
+ * Chooses one Ham message randomly and returns it
+ * @returns 
+ */
 export const getHAMMessage = () => {
     const pos = Math.floor(Math.random() * hamMessages.length)
     return hamMessages[pos]
 }
 
+/**
+ * Care messages to send to user to encourage them to take breaks
+ */
 export const careMessages = [
     "Remember to take a deep breath and stretch. Your well-being matters!",
     "A short break can do wonders for your productivity. Take a moment for yourself.",
@@ -82,12 +96,17 @@ export const careMessages = [
     "A break may be the missing piece to solve that problem you've been pondering. Take a breather!",
 ]
 
+/**
+ * Returns on of the Care messages randomly to the users
+ */
 export const getCareMessage = () => {
     const pos = Math.floor(Math.random() * careMessages.length)
     return careMessages[pos]
 }
 
-
+/**
+ * a definition for all the default tasks to show tho the user 
+ */
 export const defaultTasks = [
     { // in time, input day + 1 (bc 00:00), will show 1 day back on calendar
         "title": "January Interterm Begins",
