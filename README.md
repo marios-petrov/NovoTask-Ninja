@@ -30,7 +30,7 @@ In your web browser enter the address: http://localhost:8000 or http://127.0.0.1
 
 In case of errors, update your python to the latest version.
 
-### Technologies Used
+### Frameworks Used
 * Python, Django, Bootstrap, JavaScript, HTML, CSS, Python anywhere, Sqllite3, Preact
 
 ## Demo
