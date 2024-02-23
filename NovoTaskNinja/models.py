@@ -49,9 +49,23 @@ class CYCRequirement(models.Model):
         return self.name
     
 class foodDay(models.Model):
-    name = models.CharField(max_length=200)
+    """
+    Worked on by Andy Trinh.
+    This is just basically the same as the CYCrequirements model. 
+    It makes a day for the days in the week, and you can mark it lethal or nonlethal.
+    
+    Attributes:
+    name : string
+        the name of the day
+    is_lethal : boolean
+        whether the day is lethal or not
+
+    Methods:
+    __str__ (self):
+        returns the name of the day
+    """
+    name = models.CharField(max_length=9)
     is_lethal = models.BooleanField(default=False)
-    #days_of_week = models.CharField(max_length=7, null=True, blank=True)  # e.g. 'MWF' for Monday, Wednesday, Friday
 
     def __str__(self):
         return self.name
