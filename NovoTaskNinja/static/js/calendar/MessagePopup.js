@@ -3,10 +3,16 @@ import { getHAMMessage } from "./database.js"
 import { messageSig } from './store.js'
 
 
+/**
+ * A Recursive function that runs a function each day at 11am
+ * @param {*} callback the function to run
+ */
 function runAt11AM(callback) {
+    // current date
     const now = new Date();
+    // current date 11am
     const targetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 11, 0, 0, 0); // Set the target time to 11 AM (24 hr clock) (hr, min, sec, ms)
-
+    // milliseconds to 11 am
     const timeUntil11AM = targetTime - now;
 
     if (timeUntil11AM > 0) {
@@ -29,10 +35,17 @@ function runAt11AM(callback) {
     }
 }
 
+/**
+ * Show the popup for care messages and HAM lunch reminders
+ * @returns 
+ */
 export const MessagePopup = () => {
+    // Auto hide duration for a Popup
     const POPUP_DURATION = 3
+    // the message to show
     const message = messageSig.value.message
     
+    // Set getHAM message to run every 11am
     useEffect(() => {
         runAt11AM(() => {
             console.log("pop")
@@ -44,6 +57,7 @@ export const MessagePopup = () => {
         })
     }, [])
 
+    // Hook to set outoclose when a message is open
     useEffect(() => {
         if (messageSig.value.open) {
             setTimeout(() => {
@@ -52,12 +66,17 @@ export const MessagePopup = () => {
         }
     }, [messageSig.value.open])
 
+    // closes a message
     const close = () => {
         messageSig.value = { ...messageSig.value, open: false }
     }
+    
+    // only show message is its open
     if (!messageSig.value.open) {
         return null
     }
+    
+    // draw the message on the bottom left corner
     return html`
         <div class='mp-body' >
             <div class='mp-header' > 
