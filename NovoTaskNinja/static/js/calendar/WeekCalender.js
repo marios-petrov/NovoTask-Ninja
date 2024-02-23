@@ -4,8 +4,12 @@ import { getDateName, getDaysInMonth, getEventInDay, getEventsForTime, getStartD
 import { EventsDisplay } from './MonthCalender.js'
 import { selectedDate } from './store.js'
 
+/**
+ * Allows changing the week show on top
+ */
 const DaysRow = ({ title }) => {
     const date = dateSig.value || 1
+    // move to the previus week
     const prevClicked = () => {
         let newDate = date - 7
         if (newDate < 0) {
@@ -18,7 +22,7 @@ const DaysRow = ({ title }) => {
         }
         dateSig.value = newDate
     }
-
+    // move to the next month
     const nextClicked = () => {
         let newDate = date + 7
         if (newDate > getDaysInMonth(monthSig.value)) {
@@ -31,6 +35,7 @@ const DaysRow = ({ title }) => {
         }
         dateSig.value = newDate
     }
+    // Show the row for week select
     return html`
     <div class='day-day-select'  >
         <div  onClick=${prevClicked} >⬅️</div>
@@ -41,6 +46,7 @@ const DaysRow = ({ title }) => {
 }
 
 export const WeekCalender = () => {
+    // get the start and end date of the week , and week title
     const getWeekRange = () => {
         const dateTime = new Date(yearSig.value, monthSig.value, dateSig.value)
         let startDay = dateTime.getDate()
@@ -68,10 +74,12 @@ export const WeekCalender = () => {
         const days = ["SUN", "MON", 'TUE', 'WED', 'THU', 'FRI', 'SAT']
         return { weekGrid: grid, rangeLabel: `${days[startPos]} ${startDay} - ${days[endPos]} ${endDay} ` }
     }
-
+    // Week grid is the occupied days of the week, rangeLabel is week's title
     const { weekGrid, rangeLabel } = getWeekRange()
+    // Get time slices
     const times = getTimes(7, 30)
 
+    // Draw the time slices
     return html`
     <div class="day-body"  >
             <${DaysRow} title=${rangeLabel} />
