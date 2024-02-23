@@ -5,7 +5,7 @@ import { dateSig } from './store.js';
 import { EventsDisplay } from './MonthCalender.js';
 
 /**
- *  WIll display the Month version of the calender
+ *  Will display the Month version of the calender
  */
 export const MonthView = ({ month }) => {
 
@@ -14,7 +14,8 @@ export const MonthView = ({ month }) => {
         const firstDayOfMonth = new Date(year, month, 1);
         return firstDayOfMonth.getDay();
     }
-    // returns a list 
+    
+    // returns a list  of days for the month or grid with no date
     function getGridData() {
         const gridData = []
         const startDay = getStartDayOfMonth(yearSig.value, month)
@@ -65,12 +66,17 @@ export const MonthView = ({ month }) => {
 }
 
 export const SemCalender = () => {
+    // check the sem to show spring or fall
     const sem = semSig.value
+    // changes sem to show
     const setSem = (val) => {
         semSig.value = val
     }
+    // gets the month for current sem
     const months = (sem === 0) ? [0, 1, 2, 3, 4] : [7, 8, 9, 10, 11]
-    console.log('sem', sem)
+    // console.log('sem', sem)
+
+    // Draws the sem calender
     return html`
     <div class='' >
         <div class='y-sems' >
