@@ -77,7 +77,9 @@ def cycreq(request):
 
 @require_http_methods(["GET", "POST"])
 def dontkillmefood(request):
-    """Displays the days and allows a user to mark them.
+    """
+    Worked on by Andy Trinh.
+    Displays the days and allows a user to mark them.
 
     Parameters
     ----------
