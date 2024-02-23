@@ -1,5 +1,5 @@
 body {
-    background-image: url('../../images/dunmeshfood.jpg');
+    background-image: url('../../images/dunmeshfood.jpg'); 
     background-size: 130%;
   }
 .main{
@@ -7,6 +7,8 @@ body {
     flex-direction: column;
     width: 100%;
 }
+
+/*ANDY WORKED ON THIS ONE*/
 
 .vstack {
     display: flex;
@@ -85,7 +87,7 @@ body {
   }
   
   .completed {
-      background-color: #f67685 !important; 
+      background-color: #f67685 !important; /* if you're wondering why the cyc page doesn't change background, but this one does it's because it doesn't have an !important*/
       color: #300b0b; 
   }
   
