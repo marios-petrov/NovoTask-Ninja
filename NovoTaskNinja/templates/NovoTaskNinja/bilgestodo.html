@@ -4,6 +4,8 @@
 
 {% block content %}
 
+<!-- Bilge worked on this -->
+
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -19,7 +21,7 @@
 
     <body>
         <div class="container">
-            {% if messages %}
+            {% if messages %} <!-- to display messages.success from views.py if there are any -->
                 <ul class="messages">
                     {% for message in messages %}
                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
@@ -42,8 +44,6 @@
             <div class="todo-container">
                 <ul class="todo-list">
                     {% for task in tasks %}
-                    
-                        <li class="{% if 'completed' if task.completed else 'incomplete' }">
 
                         {{task.name}}
 
