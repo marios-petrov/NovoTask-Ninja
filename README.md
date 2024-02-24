@@ -48,8 +48,7 @@ In case of errors, update your python to the latest version.
 ![NCF Hours](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/NCFHours.png)
 
 ### Todo M Page (Marios')
-![Todo M]<img width="1607" alt="TodoM" src="https://github.com/marios-petrov/NovoTask-Ninja/assets/118226559/5162df2c-c5dd-43c5-8316-0bd4cad36855">
-
+<img width="1607" alt="TodoM" src="https://github.com/marios-petrov/NovoTask-Ninja/assets/118226559/5162df2c-c5dd-43c5-8316-0bd4cad36855">
 
 ### Todo Page (Bilge's)
 ![Todo B](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Todo.png)
