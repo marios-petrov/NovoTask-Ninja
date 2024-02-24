@@ -5,20 +5,67 @@ from django.views.decorators.http import require_http_methods
 from .models import *
 
 def calendar(request):
+    """
+       Renders the calendar page of the NovoTaskNinja application.
+
+       Args:
+           request: HttpRequest object.
+
+       Returns:
+           HttpResponse object rendering the calendar.html template.
+       """
     return render(request, './NovoTaskNinja/calendar.html')
 
 def ncfhours(request):
+    """
+       Renders the NCF hours page of the NovoTaskNinja application.
+
+       Args:
+           request: HttpRequest object.
+
+       Returns:
+           HttpResponse object rendering the ncfhours.html template.
+       """
     return render(request, './NovoTaskNinja/ncfhours.html')
 
 def timer(request):
+    """
+        Renders the timer page of the NovoTaskNinja application.
+
+        Args:
+            request: HttpRequest object.
+
+        Returns:
+            HttpResponse object rendering the timer.html template.
+        """
     return render(request, './NovoTaskNinja/timer.html')
 
 def surprise(request):
+    """
+        Renders a surprise page of the NovoTaskNinja application.
+
+        Args:
+            request: HttpRequest object.
+
+        Returns:
+            HttpResponse object rendering the surprise.html template.
+    """
     return render(request, './NovoTaskNinja/surprise.html')
 
 @require_http_methods(["GET", "POST"])
 def cycreq(request):
-    # Handling CYC requirements
+    """
+        Handles CYC (Complete Your Courses) requests. Supports both GET and POST methods.
+        On POST, it processes form data to add, complete, or remove courses, and toggle CYC requirements.
+        On GET, it displays the CYC request page with lists of in-progress and completed courses, and CYC requirements.
+
+        Args:
+            request: HttpRequest object.
+
+        Returns:
+            On POST, redirects to the 'cycreq' page.
+            On GET, HttpResponse object rendering the cycreq.html template with context.
+        """
     if request.method == "POST":
         action = request.POST.get('action')
 
@@ -97,7 +144,7 @@ def dontkillmefood(request):
     if request.method == "POST":
         action = request.POST.get('action')
         if 'toggle_foodstatus' in request.POST: 
-            #these are dumb names in hindsite but i didnt wanna rename anything
+            #these are dumb names in hindsite but i didnt want to rename anything
             foodstatus_id = request.POST.get('foodstatus_id', '')
             foodstatus = foodDay.objects.get(id=foodstatus_id) #getting the day objects for marking
             foodstatus.is_lethal = not foodstatus.is_lethal #marks it nonlethal
@@ -114,6 +161,18 @@ def dontkillmefood(request):
 
 @require_http_methods(["GET", "POST"])
 def todo(request):
+    """
+        Handles todo item requests. Supports both GET and POST methods.
+        On POST, processes form data to add, mark as complete, or delete todo items.
+        On GET, displays the todo page with a list of todo items ordered by creation date.
+
+        Args:
+            request: HttpRequest object.
+
+        Returns:
+            On POST, redirects to the 'todo' page (ToDO-M).
+            On GET, HttpResponse object rendering the todo.html template with context.
+        """
     if request.method == "POST":
         if 'add' in request.POST:
             description = request.POST.get('description', '').strip()
