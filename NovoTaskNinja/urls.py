@@ -4,8 +4,8 @@ from . import views
 urlpatterns = [
 
     # Backend-Heavy Pages
-    path('todo/', views.todo, name='todo'),
-    path("bilgestodo/", views.bilgestodo, name='bilgestodo'),
+    path('todo/', views.todo, name='todo'), #todo M
+    path("bilgestodo/", views.bilgestodo, name='bilgestodo'), #todo B
     path('cycreq/', views.cycreq, name='cycreq'),
     path('dontkillmefood/', views.dontkillmefood, name='dontkillmefood'),
 
