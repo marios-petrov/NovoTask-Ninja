@@ -42,6 +42,7 @@ def timer(request):
 
 def surprise(request):
     """
+        Worked on by Bilge Akyol
         Renders a surprise page of the NovoTaskNinja application.
 
         Args:
@@ -198,9 +199,19 @@ def todo(request):
     return render(request, 'NovoTaskNinja/todo.html', context)
 
 # handling the Todo B page
-# this version has the pop-up message after task completion
 @require_http_methods(["GET", "POST"])
 def bilgestodo(request):
+    """
+    Worked on by Bilge Akyol
+       this version is an improved version of the todo function and has the pop-up message after task completion
+
+       Args:
+           request: HttpRequest object.
+
+       Returns:
+           On POST, redirects to the 'todo' page (Todo B).
+            On GET, HttpResponse object rendering the todo.html template with context.
+    """
     # if the user clicked a button with POST method
     if request.method == "POST":
         # if it was the add task button, add the task to database
