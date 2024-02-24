@@ -47,8 +47,11 @@ In case of errors, update your python to the latest version.
 ### NCF Hours Page
 ![NCF Hours](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/NCFHours.png)
 
-### Todo Page
-![Todo](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Todo.png)
+### Todo M Page (Marios')
+![Todo M](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/TodoM.png)
+
+### Todo Page (Bilge's)
+![Todo M](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Todo.png)
 
 ### Don't Kill Me Food Page
 ![Food](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Food.png)
