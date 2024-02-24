@@ -51,7 +51,7 @@ In case of errors, update your python to the latest version.
 ![Todo M](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/TodoM.png)
 
 ### Todo Page (Bilge's)
-![Todo M](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Todo.png)
+![Todo B](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Todo.png)
 
 ### Don't Kill Me Food Page
 ![Food](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Food.png)
@@ -66,4 +66,4 @@ In case of errors, update your python to the latest version.
 ![Surprise](https://github.com/marios-petrov/NovoTask-Ninja/blob/456b227b6168be1e0d25ec3ff5ab924174a18a06/NovoTaskNinja/static/screenshots/Surprise.png)
 
 ## Resources/Acknowledgements
-
+See the document for resorces & contributions: https://docs.google.com/document/d/1WpV7PDYz-x3eMOh_-jwFcj4bQVykcFichot9hWcJcx8/edit?usp=sharing
